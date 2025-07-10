@@ -1,4 +1,3 @@
-#Experiment 1: Human Activity Recognition in Video
 import cv2
 import mediapipe as mp
 
