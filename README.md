@@ -1,57 +1,91 @@
-# 🎯 1: Human Activity Recognition in Video
+# 🎓 Signal & Video Processing Experiments
 
-This experiment demonstrates the implementation of a basic **human activity recognition system** using **MediaPipe Pose Estimation** and **OpenCV**. The goal is to detect and track human body landmarks in a prerecorded video, which visually outlines the human skeleton in motion.
-
----
-
-## 🧪 Objective
-
-To identify and draw the skeletal structure of a human performing an action (like walking) from a video input, thereby recognizing human pose and movement patterns.
+This document summarizes two core experiments performed using Python for media signal analysis:  
+- **Experiment 1**: Human Activity Recognition in Video  
+- **Experiment 2**: Audio Signal Analysis using Librosa
 
 ---
 
-## 🛠️ Tools & Technologies
+## 🧪 Experiment 1: Human Activity Recognition in Video
 
-- **Python 3.7+**
-- **OpenCV** – For video capture, processing, and display.
-- **MediaPipe** – For real-time pose estimation and landmark detection.
-- **Walk_2.mp4** – Input video file showing a human walking.
+This experiment uses **MediaPipe** and **OpenCV** to detect human poses in video frames and visualize body landmarks in real time.
 
----
+### 🔍 Objective
+To detect human activities like walking, standing, etc., by identifying key body joints using pre-trained pose estimation models.
 
-## 📋 Workflow
+### 🛠️ Tools & Libraries
+- **OpenCV** – For reading and displaying video
+- **MediaPipe** – For human pose estimation
+- **Python** – Language for implementing real-time inference
 
-1. Load a video file containing human activity.
-2. Convert each video frame from BGR to RGB for MediaPipe compatibility.
-3. Apply the MediaPipe Pose model to detect 33 human body landmarks.
-4. Draw pose connections and landmarks on each frame.
-5. Display the processed video in real-time.
-6. Exit the visualization by pressing the `q` key.
+### ⚙️ Workflow
+1. Load a pre-recorded video file using `cv2.VideoCapture`.
+2. Convert each frame from BGR to RGB (required by MediaPipe).
+3. Use `mp.solutions.pose` to process each frame and detect body landmarks.
+4. Overlay pose landmarks and skeletal connections on the original frame.
+5. Display live video with pose tracking until the video ends or user exits.
 
----
+### 📈 Output
+A real-time video window showing:
+- Pose landmarks (e.g., elbows, knees)
+- Skeleton connections between body joints
 
-## 🎥 Output
-
-- Real-time visualization of the input video with the human pose skeleton overlaid.
-- Body parts like shoulders, elbows, knees, and ankles are connected to form a pose graph.
-- The system continuously updates the pose as the video progresses.
-
----
-
-## 📌 Applications
-
-- Human activity recognition (walking, running, sitting)
-- Gesture-based user interfaces
-- Sports and fitness analytics
-- Surveillance systems
-- Animation and motion tracking
+### 📌 Applications
+- Fitness and yoga tracking
+- Motion capture in sports
+- Gesture recognition and body language detection
 
 ---
 
-## ⚠️ Notes
+## 🎧 Experiment 2: Audio Signal Analysis using Librosa
 
-- Ensure the `Walk_2.mp4` video file is available in the project directory.
-- The accuracy of pose detection depends on lighting, clarity, and visibility of the subject.
-- MediaPipe Pose works best with full-body visibility and upright poses.
+This experiment involves analyzing a `.wav` audio file using various signal processing techniques to extract time, frequency, and energy-related information.
+
+### 🔍 Objective
+To understand the structure and characteristics of an audio signal by visualizing:
+- Waveform
+- Spectrogram
+- Energy levels
+- Fundamental frequency (Pitch)
+
+### 🛠️ Tools & Libraries
+- **Librosa** – For audio signal processing
+- **Matplotlib** – For visualizing signal properties
+- **NumPy** – For numerical operations
+- **Python** – Primary scripting language
+
+### ⚙️ Workflow
+1. Load the audio file using `librosa.load()`.
+2. Display waveform in time-domain.
+3. Compute Short-Time Fourier Transform (STFT) and plot the spectrogram.
+4. Calculate short-time energy using frame-based sliding window.
+5. Extract pitch (F0) using `librosa.pyin()`.
+
+### 📈 Output Visuals
+| Visualization         | Description                                       |
+|------------------------|---------------------------------------------------|
+| **Waveform**           | Amplitude vs Time                                 |
+| **Spectrogram**        | Frequency vs Time (in decibels)                   |
+| **Short-Time Energy**  | Temporal energy variation                         |
+| **Pitch Estimation**   | Extracted pitch contour across time               |
+
+### 📌 Applications
+- Speech recognition
+- Music genre classification
+- Emotion detection in speech
+- Speaker verification
+- Onset detection in music
 
 ---
+
+## ✅ Summary
+
+| Experiment | Techniques Used                   | Tools                      | Output |
+|------------|-----------------------------------|----------------------------|--------|
+| Human Activity Recognition | Pose Estimation (MediaPipe)       | OpenCV, MediaPipe           | Live annotated video |
+| Audio Analysis            | STFT, Energy, F0 Extraction       | Librosa, Matplotlib, NumPy | Waveform, Spectrogram, Pitch graph |
+
+---
+
+> These experiments form a foundational understanding of how machines can interpret and analyze both **visual motion** and **acoustic signals** for real-world intelligent applications.
+
