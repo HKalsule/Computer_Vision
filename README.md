@@ -1,9 +1,10 @@
 # 🎓 Signal & Video Processing Experiments
 
-This document summarizes three core experiments performed using Python for media signal analysis:  
+This document summarizes four core experiments performed using Python for media signal analysis:  
 - **Experiment 1**: Human Activity Recognition in Video  
 - **Experiment 2**: Audio Signal Analysis using Librosa  
-- **Experiment 3**: Circle Detection Using Hough Transform
+- **Experiment 3**: Circle Detection Using Hough Transform  
+- **Experiment 4**: Camera Calibration Using Checkerboard Patterns
 
 ---
 
@@ -64,11 +65,11 @@ To understand the structure and characteristics of an audio signal by visualizin
 
 ### 📈 Output Visuals
 | Visualization         | Description                                       |
-|------------------------|---------------------------------------------------|
-| **Waveform**           | Amplitude vs Time                                 |
-| **Spectrogram**        | Frequency vs Time (in decibels)                   |
-| **Short-Time Energy**  | Temporal energy variation                         |
-| **Pitch Estimation**   | Extracted pitch contour across time               |
+|----------------------|-------------------------------------------------|
+| **Waveform**         | Amplitude vs Time                                |
+| **Spectrogram**      | Frequency vs Time (in decibels)                  |
+| **Short-Time Energy**| Temporal energy variation                         |
+| **Pitch Estimation** | Extracted pitch contour across time              |
 
 ### 📌 Applications
 - Speech recognition  
@@ -116,13 +117,48 @@ To detect and annotate circular objects in an image by adjusting detection param
 
 ---
 
+## 📷 Experiment 4: Camera Calibration Using Checkerboard Patterns
+
+This experiment calibrates a camera’s intrinsic and extrinsic parameters using images of a known checkerboard pattern.
+
+### 🔍 Objective  
+To accurately estimate the camera’s intrinsic matrix, distortion coefficients, and extrinsic parameters by analyzing checkerboard images taken from different viewpoints.
+
+### 🛠️ Tools & Libraries  
+- **OpenCV** – For image processing, corner detection, and calibration  
+- **NumPy** – For matrix and numerical operations  
+- **Python** – Scripting and automation  
+
+### ⚙️ Workflow  
+1. Prepare 3D object points corresponding to checkerboard inner corners.  
+2. Load checkerboard images and convert them to grayscale.  
+3. Detect checkerboard corners using `cv2.findChessboardCorners()` and refine with subpixel accuracy.  
+4. Collect corresponding 3D-2D points across images.  
+5. Use `cv2.calibrateCamera()` to estimate intrinsic, distortion, and extrinsic parameters.  
+6. Calculate mean reprojection error to evaluate calibration accuracy.
+
+### 📈 Output  
+- Camera intrinsic matrix (focal length, optical centers)  
+- Distortion coefficients (radial and tangential lens distortion)  
+- Rotation and translation vectors (camera pose) for each image  
+- Mean reprojection error indicating calibration quality  
+
+### 📌 Applications  
+- Correcting lens distortion in images  
+- 3D reconstruction and augmented reality  
+- Robotics navigation and spatial measurements  
+- Multi-camera and stereo vision systems calibration
+
+---
+
 ## ✅ Summary
 
 | Experiment               | Techniques Used             | Tools                          | Output                         |
-|--------------------------|-----------------------------|--------------------------------|--------------------------------|
+|--------------------------|----------------------------|--------------------------------|--------------------------------|
 | Human Activity Recognition | Pose Estimation (MediaPipe) | OpenCV, MediaPipe              | Live annotated video           |
 | Audio Analysis            | STFT, Energy, F0 Extraction | Librosa, Matplotlib, NumPy     | Waveform, Spectrogram, Pitch   |
 | Circle Detection          | Hough Circle Transform      | OpenCV, NumPy                  | Image with detected circles    |
+| Camera Calibration       | Checkerboard Detection, Calibration | OpenCV, NumPy           | Intrinsic/Extrinsic params, Distortion coefficients |
 
 ---
 
